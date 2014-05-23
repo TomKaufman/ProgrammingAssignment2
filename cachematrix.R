@@ -24,13 +24,13 @@ makeCacheMatrix <- function(x = matrix()) {
 #calculates the inversion.
 
 cacheinv <- function(x, ...) {
-  m <- x$getinv()
-  if(!is.null(m)) {
-    message("getting cached data")
-    return(m)
+  m <- x$getinv()  #getting the inverse matrix 
+  if(!is.null(m)) { #checking if there is a previously calculated solution
+    message("getting cached data") # if there is a solution 
+    return(m)                     #printing the massage and the result
     
   }
-  data <- x$get()
+  data <- x$get() # if there is no solution, calculating the solution
   m <- solve(data, ...)
   x$setinv(m)
   m
